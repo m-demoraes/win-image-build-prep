@@ -33,11 +33,6 @@ Import-Module .\UnattendResources\ini.psm1
 # Generate the config.ini file.
 New-WindowsImageConfig -ConfigFilePath $ConfigFilePath
 
-# Automate the config options in config.ini
-Set-IniFileValue -Path (Resolve-Path $ConfigFilePath) -Section "DEFAULT" `
-                                      -Key "wim_file_path" `
-                                      -Value "D:\Sources\install.wim"
-
 # Start the imaging process using the config options set above.
 New-WindowsOnlineImage -ConfigFilePath $ConfigFilePath
 
